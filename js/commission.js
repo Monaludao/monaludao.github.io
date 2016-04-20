@@ -34,7 +34,7 @@ function item_render(item_object){
 		};
 		if(con_case.committee_speak != null){
 			$('.record-content').append('<div><p>委員發言摘要：</p></div>');
-			array_render(con_case.committee_speak);
+			speak_render(con_case.committee_speak);
 		};
 		if(con_case.response != null){
 			$('.record-content').append('<div><p>都發局回覆：</p></div>');
@@ -57,6 +57,15 @@ function array_render(con_array){
 	var length = con_array.length
 	for(var i = 0;i <length; i++){
 		var con_section = con_array[i];
-			$('.record-content').append('<div><p>'+con_section+'</p></div>');
+		$('.record-content').append('<div><p>'+con_section+'</p></div>');
+	}
+}
+
+function speak_render(con_speak){
+	var length = con_speak.length
+	for(var i = 0;i <length; i++){
+		var con_section = con_speak[i];
+		$('.record-content').append('<div><p>'+con_section.committe+'<br>');
+		$('.record-content').append(''+con_section.speak+'</p></div>');
 	}
 }
