@@ -1,0 +1,239 @@
+@import url(http://fonts.googleapis.com/css?family=Oregano);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
+body{
+	font-size:13px;
+	font-family:'Raleway',"Helvetica Neue",Helvetica,Arial,sans-serif,"Apple LiGothic","微軟正黑體","Microsoft JhengHei";
+	font-weight: normal;
+	/*background: url(../images/bg.jpg);*/
+	background-color: #e6dbd4;
+}
+
+:focus { outline:none !important;}
+
+.clear-both{
+	clear: both;
+}
+
+.center{
+	text-align: center;
+}
+
+.f-left{
+	float: left;
+}
+
+a{
+	color:#ADD445;
+	text-shadow: 1px 1px #fff;
+	transition: color .2s;
+	-moz-transition: color .2s;
+	-webkit-transition: color .2s;
+	-o-transition: color .2s;
+}
+
+a:hover{	
+	color:#5C5B50;
+	transition: color .3s;
+	-moz-transition: color .3s;
+	-webkit-transition: color .3s;
+	-o-transition: color .3s;
+	text-decoration: none;
+}
+
+.tag{
+	background: #A2C54D;
+	padding: 4px 9px 4px 9px;
+	margin: 5px;
+	border-radius: 10px;
+}
+
+.tag:hover{
+	color: #5C5B50;
+}
+
+h2{
+	font-family: 'Open Sans';
+	text-transform: uppercase;
+	font-size: 24px;
+	padding-left:10px;
+	font-style: italic;
+	margin: 0px;
+}
+
+hr {
+	margin: 80px 0 60px 0;
+	border-top: 1px solid #c9cabd;
+	border-bottom: 1px solid #ffffff;
+	clear: both;
+}
+
+.alert-detail{
+	font-size: 12px;
+	margin: 20px auto 0px auto;
+	background: #d8d9cb;
+	color: #666666;
+	text-shadow:none;
+	border: #bbbbbb 1px dashed;
+}
+/* -- TextColor 
+----------------------------------------*/
+.gray{	color:#5C5B50;}
+.green{	color:#A2C54D;}
+.blue{ color:#0088cc;}
+
+
+/* -- 排版
+----------------------------------------*/
+.info-wrapper{
+	width: 180px;
+	height: 200px;
+	position: absolute;
+	top: 50px;
+	left:0px;
+	color: #42A6BD;
+transition: left .5s;
+-moz-transition: left .5s;
+-webkit-transition: left .5s;
+-o-transition: left .5s;
+}
+
+.info-wrapper.closed{
+	left: -140px;
+transition: left .5s;
+-moz-transition: left .5s;
+-webkit-transition: left .5s;
+-o-transition: left .5s;
+}
+
+.info-wrapper a{
+	color: #42A6BD;
+}
+
+.info-wrapper a:hover{
+	color: #333;
+}
+
+.info-wrapper .show-info{
+	width: 40px;
+	height: 40px;
+	background: #e5f6f7;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+-webkit-border-top-right-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-topright: 5px;
+-moz-border-radius-bottomright: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+
+.info-wrapper .info-content{
+	width: 140px;
+	height: 200px;
+	background: #e5f6f7;
+	position: absolute;
+	top: 0px;
+	right: 40px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+border-bottom-right-radius: 5px;
+}
+
+.info-wrapper .info-content p{
+	margin:15px;
+	font-size: 14px;
+}
+
+.info-wrapper .info-content label{
+	border-bottom: #42A6BD 1px solid;
+	width: 36px;
+	padding: 1px 3px;
+	margin-bottom: 5px;
+}
+
+
+/* -- Add wish
+----------------------------------------*/
+.add-wish-wrap{
+	padding-top: 50px;
+	width: 100%;
+	overflow: hidden;
+	background: #9AD4D9;
+	text-align: center;
+}
+
+.add-wish-wrap h1{
+	color: #e5f6f7;
+	text-shadow:#42A6BD 2px 3px 0px;
+	font-size:50px;
+}
+
+.add-wish-wrap input {
+	border: none;
+	border-radius: 0px;
+	height: 60px;
+	background: #e5f6f7;
+	border: #e5f6f7 3px solid;
+	box-shadow: none;
+	font-family:'Raleway',"Helvetica Neue",Helvetica,Arial,sans-serif,"Apple LiGothic","微軟正黑體","Microsoft JhengHei";
+	color: #42A6BD;
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: 30px;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.add-wish-wrap input:focus{
+	border: #42A6BD 3px solid;
+	box-shadow: none;
+}
+
+::-webkit-input-placeholder{ 
+    color:#bbbbbb !important;
+    font-weight: 200;
+}
+
+#wish-btn{
+	margin: 20px auto 30px auto;
+	width: 100px;
+	height: 30px;
+	background: #42A6BD;
+	padding: 15px 10px;
+	color: #e5f6f7;
+	line-height: 1;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+
+/* -- wish pool
+----------------------------------------*/
+.wish-pool-wrap{
+	width: 100%;
+	overflow: hidden;
+}
+
+.wish-pool{
+	width: 1024px;
+	overflow: hidden;
+	margin: 50px auto 50px auto;
+}
+
+.wish-pool .wish{
+	padding: 5px 15px;
+	margin:0px 15px 30px 0px;
+	background: rgba(255,255,255,0.6);
+	float: left;
+	border-radius: 5px;
+	font-size: 26px;
+	line-height: 1.5;
+	color: #333;
+}
+
+
+
+
