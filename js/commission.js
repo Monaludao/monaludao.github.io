@@ -1,69 +1,19 @@
-//FIX by Hacker 0919
-//REF: http://stackoverflow.com/questions/1787322/htmlspecialchars-equivalent-in-javascript
-function escapeHtml(text) {
-	return text
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;")
-		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&#039;");
-}
-
 function getData(){
-
 	$.getJSON('https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/674.json', function(data) {
-		wishes = data;
-		//var length = wishes.length;
-		$('.wish-pool').append('<div class="wish">'+wishes.title+'</div>');
-		$('.wish-pool').append('<div class="wish">'+wishes.session+'</div>');
-		//開始製作每個 wish
-		// for( var i = length; i >0; i-- ){
-		//
-		// 	// var showHtml = escapeHtml( wishes[i-1] );
-		// 	var showHtml = wishes[i-1];
-		//
-		// 	$('.wish-pool').append('<div class="wish hide">'+showHtml+'</div>');
-		// 	$('.wish-pool div').eq( length - i ).delay( (length - i)*30 ).fadeIn(800);
-		// }
+		records = data;
+		$('.record-content').append('<p><div>'+records.title+'</div></p>');
+		$('.record-content').append('<p><div>'+records.session+'</div></p>');
+		$('.record-content').append('<p><div>'+records.date+'</div></p>');
+		$('.record-content').append('<p><div>'+records.start_time+'</div></p>');
+		$('.record-content').append('<p><div>'+records.end_time+'</div></p>');
+		$('.record-content').append('<p><div>'+records.location+'</div></p>');
+		$('.record-content').append('<p><div>'+records.chairman+'</div></p>');
+		$('.record-content').append('<p><div>'+records.note_taker+'</div></p>');
+		$('.record-content').append('<p><div>'+records.attend_committee+'</div></p>');
+		$('.record-content').append('<p><div>'+records.attend_unit+'</div></p>');
+		$('.record-content').append('<p><div>'+records.report_item+'</div></p>');
+		$('.record-content').append('<p><div>'+records.deliberate_item+'</div></p>');
+		$('.record-content').append('<p><div>'+records.discuss_item+'</div></p>');
 	});
 
-};
-
-function saveData(){
-
-	//如果 project name 空白不能送出
-	if ( $('#giftname').val() == '') {
-		alert('Please Write A Gift');
-	} else {
-
-		$('#wish-btn').html('★');
-
-		//取得新願望 並塞到前台。
-		var newWish = $('#giftname').val();
-		newWish = escapeHtml(newWish);
-
-		//把 append 好的 data 存回去
-		$.ajax({
-			url: "addWish.php",
-			type: "POST",
-			data: { wish : newWish },
-			success: function(data){
-				if ( data == '1'){
-					alert('哎呀，好像有什麼東西出錯啦，請稍後再試。');
-				} else {
-					$('.wish-pool div').eq(0).before('<div class="wish hide">'+newWish+'</div>');
-					$('.wish-pool div').eq(0).fadeIn(1000);
-				}
-
-				$('#giftname').val(''); //清空input
-				setTimeout( function(){
-					$('#wish-btn').html('WISH'); //修改按鈕字串
-				}, 1000 );
-
-			},
-			error: function(){
-				//console.log(" 新增專案大失敗 :-( ");
-			}
-		});
-	}
 };
