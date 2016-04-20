@@ -11,7 +11,7 @@ function escapeHtml(text) {
 
 function getData(){
 
-	$.getJSON('json/commission.json', function(data) {
+	$.getJSON('json/674.json', function(data) {
 		wishes = data.deliberate_item;
 		//var length = wishes.length;
 		$('.wish-pool').append('<div class="wish">'+wishes[0]+'</div>');
