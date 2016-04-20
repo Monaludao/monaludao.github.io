@@ -13,10 +13,10 @@ function getData(){
 
 	$.getJSON('json/data.json', function(data) {
 		wishes = data.deliberate_item;
-		var length = wishes.length;
+		//var length = wishes.length;
 
 		//開始製作每個 wish
-		for( var i = length; i >0; i-- ){
+		for( var i = 99; i >0; i-- ){
 
 			// var showHtml = escapeHtml( wishes[i-1] );
 			var showHtml = wishes[i-1];
