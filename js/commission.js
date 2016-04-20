@@ -14,7 +14,7 @@ function getData(){
 	$.getJSON('json/674.json', function(data) {
 		wishes = data;
 		//var length = wishes.length;
-		$('.wish-pool').append('<div class="wish">'+wishes[0]+'</div>');
+		$('.wish-pool').append('<div class="wish">'+wishes+'</div>');
 		//開始製作每個 wish
 		// for( var i = length; i >0; i-- ){
 		//
