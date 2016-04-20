@@ -29,7 +29,7 @@ function item_render(item_object){
 		$('.record-content').append('<div><p>'+con_case.case+'</p></div>');
 		$('.record-content').append('<div><p>說明：</p></div>');
 		// $('.record-content').append('<div><p>'+con_case.description+'</p></div>');
-		array_render(con_case.description);
+		if(con_case.description != null){array_render(con_case.description)};
 		$('.record-content').append('<div><p>委員發言摘要：</p></div>');
 		$('.record-content').append('<div><p>'+con_case.committee_speak+'</p></div>');
 		$('.record-content').append('<div><p>都發局回覆：</p></div>');
