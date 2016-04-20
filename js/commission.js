@@ -27,15 +27,29 @@ function item_render(item_object){
 		var con_case = item_object[i];
 		$('.record-content').append('<div><p>案名：</p></div>');
 		$('.record-content').append('<div><p>'+con_case.case+'</p></div>');
-		$('.record-content').append('<div><p>說明：</p></div>');
 		// $('.record-content').append('<div><p>'+con_case.description+'</p></div>');
-		if(con_case.description != null){array_render(con_case.description)};
-		$('.record-content').append('<div><p>委員發言摘要：</p></div>');
-		$('.record-content').append('<div><p>'+con_case.committee_speak+'</p></div>');
-		$('.record-content').append('<div><p>都發局回覆：</p></div>');
-		$('.record-content').append('<div><p>'+con_case.response+'</p></div>');
-		$('.record-content').append('<div><p>決議：</p></div>');
-		$('.record-content').append('<div><p>'+con_case.resolution+'</p></div>');
+		if(con_case.description != null){
+			$('.record-content').append('<div><p>說明：</p></div>');
+			array_render(con_case.description);
+		};
+		if(con_case.committee_speak != null){
+			$('.record-content').append('<div><p>委員發言摘要：</p></div>');
+			array_render(con_case.committee_speak);
+		};
+		if(con_case.response != null){
+			$('.record-content').append('<div><p>都發局回覆：</p></div>');
+			array_render(con_case.response);
+		};
+		if(con_case.resolution != null){
+			$('.record-content').append('<div><p>決議：</p></div>');
+			array_render(con_case.resolution);
+		};
+		// $('.record-content').append('<div><p>委員發言摘要：</p></div>');
+		// $('.record-content').append('<div><p>'+con_case.committee_speak+'</p></div>');
+		// $('.record-content').append('<div><p>都發局回覆：</p></div>');
+		// $('.record-content').append('<div><p>'+con_case.response+'</p></div>');
+		// $('.record-content').append('<div><p>決議：</p></div>');
+		// $('.record-content').append('<div><p>'+con_case.resolution+'</p></div>');
 	}
 }
 
