@@ -65,7 +65,7 @@ function speak_render(con_speak){
 	var length = con_speak.length
 	for(var i = 0;i <length; i++){
 		var con_section = con_speak[i];
-		$('.record-content').append('<div><p>'+con_section.committe+'<br>');
+		$('.record-content').append('<div><p>'+con_section.committee+'<br>');
 		$('.record-content').append(''+con_section.speak+'</p></div>');
 	}
 }
