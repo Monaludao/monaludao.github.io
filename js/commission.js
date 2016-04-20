@@ -12,7 +12,7 @@ function escapeHtml(text) {
 function getData(){
 
 	$.getJSON('json/data.json', function(data) {
-		wishes = data.dataset;
+		wishes = data.title;
 		var length = wishes.length;
 
 		//開始製作每個 wish
