@@ -11,7 +11,7 @@ function escapeHtml(text) {
 
 function getData(){
 
-	$.getJSON('data.json', function(data) {
+	$.getJSON('json/data.json', function(data) {
 		wishes = data.dataset;
 		var length = wishes.length;
 
