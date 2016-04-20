@@ -11,7 +11,7 @@ function escapeHtml(text) {
 
 function getData(){
 
-	$.getJSON('json/674.json', function(data) {
+	$.getJSON('json/https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/674.json', function(data) {
 		wishes = data;
 		//var length = wishes.length;
 		$('.wish-pool').append('<div class="wish">'+wishes.title+'</div>');
