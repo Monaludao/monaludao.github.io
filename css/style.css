@@ -32,7 +32,7 @@ a{
 	-o-transition: color .2s;
 }
 
-a:hover{	
+a:hover{
 	color:#5C5B50;
 	transition: color .3s;
 	-moz-transition: color .3s;
@@ -76,7 +76,7 @@ hr {
 	text-shadow:none;
 	border: #bbbbbb 1px dashed;
 }
-/* -- TextColor 
+/* -- TextColor
 ----------------------------------------*/
 .gray{	color:#5C5B50;}
 .green{	color:#A2C54D;}
@@ -192,7 +192,7 @@ border-bottom-right-radius: 5px;
 	box-shadow: none;
 }
 
-::-webkit-input-placeholder{ 
+::-webkit-input-placeholder{
     color:#bbbbbb !important;
     font-weight: 200;
 }
@@ -234,6 +234,6 @@ border-bottom-right-radius: 5px;
 	color: #333;
 }
 
-
-
-
+.item{
+	margin:0px 0px 50px 0px;	
+}
