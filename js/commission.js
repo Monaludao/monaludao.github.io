@@ -12,7 +12,7 @@ function escapeHtml(text) {
 function getData(){
 
 	$.getJSON('json/data.json', function(data) {
-		wishes = data.deliberate_item;
+		wishes = data;
 		//var length = wishes.length;
 		$('.wish-pool').append('<div class="wish">'+wishes+'</div>');
 		//開始製作每個 wish
