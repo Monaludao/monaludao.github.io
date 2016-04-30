@@ -1,14 +1,21 @@
 function getData(){
 	$.getJSON('https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/673.json', function(data) {
 		records = data;
-		$('.record-content').append('<div><p>'+records.title+'</p></div>');
-		$('.record-content').append('<div><p>日期：'+records.date+'</p></div>');
-		$('.record-content').append('<div><p>時間：'+records.start_time+'-'+records.end_time+'</p></div>');
-		$('.record-content').append('<div><p>地點：'+records.location+'</p></div>');
-		$('.record-content').append('<div><p>主席：'+records.chairman+'</p></div>');
-		$('.record-content').append('<div><p>紀錄彙整：'+records.note_taker+'</p></div>');
-		$('.record-content').append('<div><p>出席委員：'+records.attend_committee+'</p></div>');
-		$('.record-content').append('<div><p>出席單位：'+records.attend_unit+'</p></div>');
+
+		$('.record-content').append('<div class="note-title"><p><span>'+records.title+'</span></p></div>');
+
+		var $notehead = $('<div class="note-head"/>');
+
+		$($notehead).append('<p><span>日期：</span><span>'+records.date+'</span></p>');
+		$($notehead).append('<p><span>日期：</span><span>'+records.date+'</span></p>');
+		$($notehead).append('<p><span>時間：</span><span>'+records.start_time+'-'+records.end_time+'</span></p>');
+		$($notehead).append('<p><span>地點：</span><span>'+records.location+'</span></p>');
+		$($notehead).append('<p><span>主席：</span><span>'+records.chairman+'</span></p>');
+		$($notehead).append('<p><span>紀錄彙整：</span><span>'+records.note_taker+'</span></p>');
+		$($notehead).append('<p><span>出席委員：</span><span>'+records.attend_committee+'</span></p>');
+		$($notehead).append('<p><span>出席單位：</span><span>'+records.attend_unit+'</span></p>');
+		$('.record-content').append($notehead);
+
 		if(records.report_item != null){
 			$('.record-content').append('<div class="report item">');
 			$('.record-content').append('<p>報告事項：</p>');

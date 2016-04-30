@@ -1,15 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Oregano);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
-
 body{
-	font-size:13px;
-	font-family:'Raleway',"Helvetica Neue",Helvetica,Arial,sans-serif,"Apple LiGothic","微軟正黑體","Microsoft JhengHei";
+	font-size: small;
+	font-family: "微軟正黑體", "Microsoft JhengHei", Verdana, Geneva, Arial, sans-serif;
 	font-weight: normal;
-	/*background: url(../images/bg.jpg);*/
-	background-color: #e6dbd4;
+	/*background-color: #e6dbd4;*/
 }
 
-:focus { outline:none !important;}
+/*:focus { outline:none !important;}
 
 .clear-both{
 	clear: both;
@@ -78,14 +74,14 @@ hr {
 }
 /* -- TextColor
 ----------------------------------------*/
-.gray{	color:#5C5B50;}
+/*.gray{	color:#5C5B50;}
 .green{	color:#A2C54D;}
-.blue{ color:#0088cc;}
+.blue{ color:#0088cc;}*/
 
 
 /* -- 排版
 ----------------------------------------*/
-.info-wrapper{
+/*.info-wrapper{
 	width: 180px;
 	height: 200px;
 	position: absolute;
@@ -152,12 +148,12 @@ border-bottom-right-radius: 5px;
 	width: 36px;
 	padding: 1px 3px;
 	margin-bottom: 5px;
-}
+}*/
 
 
 /* -- Add wish
 ----------------------------------------*/
-.add-wish-wrap{
+/*.add-wish-wrap{
 	padding-top: 50px;
 	width: 100%;
 	overflow: hidden;
@@ -207,12 +203,12 @@ border-bottom-right-radius: 5px;
 	line-height: 1;
 	font-size: 30px;
 	cursor: pointer;
-}
+}*/
 
 
 /* -- wish pool
 ----------------------------------------*/
-.wish-pool-wrap{
+/*.wish-pool-wrap{
 	width: 100%;
 	overflow: hidden;
 }
@@ -232,8 +228,8 @@ border-bottom-right-radius: 5px;
 	font-size: 26px;
 	line-height: 1.5;
 	color: #333;
-}
+}*/
 
 .item{
-	margin:0px 0px 50px 0px;	
+	margin:0px 0px 50px 0px;
 }
