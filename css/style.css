@@ -1,8 +1,11 @@
-body{
+body {
 	font-size: small;
 	font-family: "微軟正黑體", "Microsoft JhengHei", Verdana, Geneva, Arial, sans-serif;
-	font-weight: normal;
-	/*background-color: #e6dbd4;*/
+}
+
+.heading {
+	color: blue;
+	font-weight: bold;
 }
 
 /*:focus { outline:none !important;}
