@@ -4,6 +4,20 @@ body {
 	font-family: "微軟正黑體", "Microsoft JhengHei", Verdana, Geneva, Arial, sans-serif;
 }
 
+#header {
+	margin: 10px;
+}
+
+#main {
+	padding: 10px;
+	margin: 0px 10px 10px 10px;
+}
+
+#footer {
+	padding: 10px;
+	margin: 0px 10px 10px 10px;
+}
+
 .heading {
 	color: blue;
 	font-weight: bold;

@@ -2,9 +2,9 @@ function getData(){
 	$.getJSON('https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/673.json', function(data) {
 		records = data;
 
-		$('.record-content').append('<div class="note-title"><p><span>'+records.title+'</span></p></div>');
+		$('#header').append('<div id="note-title"><p><span>'+records.title+'</span></p></div>');
 
-		var $note_head = $('<div class="note-head"/>');
+		var $note_head = $('<div id="note-head"/>');
 		$($note_head).append('<p><span class="heading">日期：</span><span>'+records.date+'</span></p>');
 		$($note_head).append('<p><span class="heading">時間：</span><span>'+records.start_time+'-'+records.end_time+'</span></p>');
 		$($note_head).append('<p><span class="heading">地點：</span><span>'+records.location+'</span></p>');
@@ -12,25 +12,25 @@ function getData(){
 		$($note_head).append('<p><span class="heading">紀錄彙整：</span><span>'+records.note_taker+'</span></p>');
 		$($note_head).append('<p><span class="heading">出席委員：</span><span>'+records.attend_committee+'</span></p>');
 		$($note_head).append('<p><span class="heading">出席單位：</span><span>'+records.attend_unit+'</span></p>');
-		$('.record-content').append($note_head);
+		$('#record-content').append($note_head);
 
 		if(records.report_item != null){
-			var $report_item = $('<div class="report item"/>');
+			var $report_item = $('<div id="report_item" class="item"/>');
 			$($report_item).append('<p><span class="heading">報告事項：</span></p>');
 			$($report_item).append(item_render(records.report_item));
-			$('.record-content').append($report_item);
+			$('#record-content').append($report_item);
 		};
 		if(records.deliberate_item != null){
-			var $deliberate_item = $('<div class="deliberate item"/>');
+			var $deliberate_item = $('<div id="deliberate_item" class="item"/>');
 			$($deliberate_item).append('<p><span class="heading">審議事項：</span></p>');
 			$($deliberate_item).append(item_render(records.deliberate_item));
-			$('.record-content').append($deliberate_item);
+			$('#record-content').append($deliberate_item);
 		};
 		if(records.discuss_item != null){
-			var $discuss_item = $('<div class="discuss item"/>');
+			var $discuss_item = $('<div id="discuss_item" class="item"/>');
 			$($discuss_item).append('<p><span>討論事項：</span></p>');
 			$($discuss_item).append(item_render(records.discuss_item));
-			$('.record-content').append($discuss_item);
+			$('#record-content').append($discuss_item);
 		};
 	});
 };
