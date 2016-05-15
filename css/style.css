@@ -4,16 +4,16 @@ body {
 	font-family: "微軟正黑體", "Microsoft JhengHei", Verdana, Geneva, Arial, sans-serif;
 }
 
-#header {
+header {
 	margin: 10px;
 }
 
-#main {
+section#main{
 	padding: 10px;
 	margin: 0px 10px 10px 10px;
 }
 
-#footer {
+footer {
 	padding: 10px;
 	margin: 0px 10px 10px 10px;
 }

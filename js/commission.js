@@ -2,7 +2,28 @@ function getData(){
 	$.getJSON('https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/673.json', function(data) {
 		records = data;
 
-		$('#header').append('<div id="note-title"><p><span>'+records.title+'</span></p></div>');
+		// $records = JSON.parse(JSON.stringify(records).replace("\n","<br>"));
+
+		// var tmp = [];
+		// var json = records.deliberate_item[0].description[3].table.原計畫;
+		// var keys = Object.keys(json);
+		// console.log(keys);
+		// console.log(json);
+		// for (var j=0; j < keys.length; j++) {
+		//    var key = "test" + keys[j].replace(/^element_/, "");
+		//    tmp[key] = json[keys[j]];
+		// }
+		// json = tmp;
+		// console.log(key);
+		// console.log(json);
+		// console.log(tmp);
+		//
+		// var keys = [];
+		// for(var k in records.deliberate_item[0].description[3].table.原計畫) {keys.push(k);console.log(k)}
+		// console.log("total " + keys.length + " keys: " + keys);
+		// console.log(records.deliberate_item[0].description[3].table.原計畫.k);
+
+		$('header').append('<div id="note-title"><h1><span>'+records.title+'</span></h1></div>');
 
 		var $note_head = $('<div id="note-head"/>');
 		$($note_head).append('<p><span class="heading">日期：</span><span>'+records.date+'</span></p>');
