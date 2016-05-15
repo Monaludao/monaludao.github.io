@@ -4,7 +4,8 @@ function getData() {
 
 		$('header').append('<div id="note-title"><h1><span>'+records.title+'</span></h1></div>');
 
-		var $note_head = $('<div id="note-head"/>');
+		var $note_head = $('<div id="note-head" class="item"/>');
+		$($note_head).append('<h2>會議記錄資訊</h2>');
 		$($note_head).append('<p><span class="heading">日期：</span><span>'+records.date+'</span></p>');
 		$($note_head).append('<p><span class="heading">時間：</span><span>'+records.start_time+'-'+records.end_time+'</span></p>');
 		$($note_head).append('<p><span class="heading">地點：</span><span>'+records.location+'</span></p>');
@@ -16,19 +17,19 @@ function getData() {
 
 		if(records.report_item != null) {
 			var $report_item = $('<div id="report_item" class="item"/>');
-			$($report_item).append('<p><span class="heading">報告事項：</span></p>');
+			$($report_item).append('<h2>報告事項</h2>');
 			$($report_item).append(item_render(records.report_item));
 			$('#record-content').append($report_item);
 		};
 		if(records.deliberate_item != null) {
 			var $deliberate_item = $('<div id="deliberate_item" class="item"/>');
-			$($deliberate_item).append('<p><span class="heading">審議事項：</span></p>');
+			$($deliberate_item).append('<h2>審議事項</h2>');
 			$($deliberate_item).append(item_render(records.deliberate_item));
 			$('#record-content').append($deliberate_item);
 		};
 		if(records.discuss_item != null) {
 			var $discuss_item = $('<div id="discuss_item" class="item"/>');
-			$($discuss_item).append('<p><span>討論事項：</span></p>');
+			$($discuss_item).append('<h2>討論事項</h2>');
 			$($discuss_item).append(item_render(records.discuss_item));
 			$('#record-content').append($discuss_item);
 		};
@@ -37,10 +38,10 @@ function getData() {
 
 function item_render(item_object) {
 	var length = item_object.length;
-	var $item_html = $('<div class="item content"/>');
+	var $item_html = $('<div class="item-content"/>');
 	for (var i = 0; i < length; i++) {
 		var con_case = item_object[i];
-		$($item_html).append('<p><span class="heading">案名：</span><span>'+con_case.case+'</span></p>');
+		$($item_html).append('<h3>'+con_case.case+'</h3>');
 
 		if(con_case.description != null) {
 			$($item_html).append('<p><span class="heading">說明：</span></p>');
