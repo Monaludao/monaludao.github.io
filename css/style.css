@@ -29,10 +29,14 @@ footer {
 	background-color: #eeeeee;
 }
 
-.petition {
+.petition-list {
 	border-style: dotted;
 	border-width: 1px;
 	border-color: grey;
 	padding: 5px;
 	margin: 5px;
+}
+
+.content.list {
+	padding: 5px;
 }

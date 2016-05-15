@@ -44,23 +44,23 @@ function item_render(item_object) {
 		$($item_html).append('<h3>'+con_case.case+'</h3>');
 
 		if(con_case.description != null) {
-			$($item_html).append('<p><span class="heading">說明：</span></p>');
+			$($item_html).append('<h4>說明</h4>');
 			$($item_html).append(array_render(con_case.description));
 		};
 		if(con_case.committee_speak != null) {
-			$($item_html).append('<p><span class="heading">委員發言摘要：</span></p>');
+			$($item_html).append('<h4>委員發言摘要</h4>');
 			$($item_html).append(speak_render(con_case.committee_speak));
 		};
 		if(con_case.response != null) {
-			$($item_html).append('<p><span class="heading">都發局回覆：</span></p>');
+			$($item_html).append('<h4>都發局回覆</h4>');
 			$($item_html).append(array_render(con_case.response));
 		};
 		if(con_case.resolution != null) {
-			$($item_html).append('<p><span class="heading">決議：</span></p>');
+			$($item_html).append('<h4>決議</h4>');
 			$($item_html).append(array_render(con_case.resolution));
 		};
 		if(con_case.petition != null) {
-			$($item_html).append('<p><span class="heading">人民陳情意見：</span></p>');
+			$($item_html).append('<h4>人民陳情意見</h4>');
 			$($item_html).append(petition_render(con_case.petition));
 		};
 	}
@@ -129,26 +129,29 @@ function speak_render(con_speak) {
 
 function petition_render(con_petition) {
 	var length = con_petition.length
-	var $petition_html = $('<div class="content petition list"/>')
+	var $petition_html = $('<div class="content petition"/>')
 	for(var i = 0; i < length; i++) {
-		$($petition_html).append('<p><span class="heading">編號：</span><span>'+con_petition[i].pet_num+'</span></p>');
-		$($petition_html).append('<p><span class="heading">陳情人：</span><span>'+con_petition[i].pet_name+'</span></p>');
+		// $($petition_html).append
+		var $petition_list = $('<div class="petition-list"/>')
+		$($petition_list).append('<p><span class="heading">編號：</span><span>'+con_petition[i].pet_num+'</span></p>');
+		$($petition_list).append('<p><span class="heading">陳情人：</span><span>'+con_petition[i].pet_name+'</span></p>');
 		if(con_petition[i].pet_reason != null) {
-			$($petition_html).append('<p><span class="heading">陳情理由：</span></p>');
-			$($petition_html).append(array_render(con_petition[i].pet_reason));
+			$($petition_list).append('<p><span class="heading">陳情理由：</span></p>');
+			$($petition_list).append(array_render(con_petition[i].pet_reason));
 		};
 		if(con_petition[i].pet_suggest != null) {
-			$($petition_html).append('<p><span class="heading">建議辦法：</span></p>');
-			$($petition_html).append(array_render(con_petition[i].pet_suggest));
+			$($petition_list).append('<p><span class="heading">建議辦法：</span></p>');
+			$($petition_list).append(array_render(con_petition[i].pet_suggest));
 		};
 		if(con_petition[i].pet_response != null) {
-			$($petition_html).append('<p><span class="heading">主管單位回應：</span></p>');
-			$($petition_html).append(array_render(con_petition[i].pet_response));
+			$($petition_list).append('<p><span class="heading">主管單位回應：</span></p>');
+			$($petition_list).append(array_render(con_petition[i].pet_response));
 		};
 		if(con_petition[i].pet_resolution != null) {
-			$($petition_html).append('<p><span class="heading">委員會決議：</span></p>');
-			$($petition_html).append(array_render(con_petition[i].pet_resolution));
+			$($petition_list).append('<p><span class="heading">委員會決議：</span></p>');
+			$($petition_list).append(array_render(con_petition[i].pet_resolution));
 		}
+		$($petition_html).append($petition_list);
 	}
 	return $petition_html;
 }
