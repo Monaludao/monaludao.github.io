@@ -1,6 +1,9 @@
+var c_table = 0;
+
 function getData() {
 	$.getJSON('https://raw.githubusercontent.com/g0v/urbancode-commission/master/record/TPEUP/JSON/673.json', function(data) {
 		records = data;
+
 
 		$('header').append('<div id="note-title"><h1><span>'+records.title+'</span></h1></div>');
 
@@ -41,29 +44,31 @@ function item_render(item_object) {
 	var $item_html = $('<div class="item-content"/>');
 	for (var i = 0; i < length; i++) {
 		var con_case = item_object[i];
-		$($item_html).append('<h3>'+con_case.case+'</h3>');
+		var $content_html = $('<div class="case"/>');
+		$($content_html).append('<h3>'+con_case.case+'</h3>');
 
 		if(con_case.description != null) {
-			$($item_html).append('<h4>說明</h4>');
-			$($item_html).append(array_render(con_case.description));
+			$($content_html).append('<h4>說明</h4>');
+			$($content_html).append(array_render(con_case.description));
 		};
 		if(con_case.committee_speak != null) {
-			$($item_html).append('<h4>委員發言摘要</h4>');
-			$($item_html).append(speak_render(con_case.committee_speak));
+			$($content_html).append('<h4>委員發言摘要</h4>');
+			$($content_html).append(speak_render(con_case.committee_speak));
 		};
 		if(con_case.response != null) {
-			$($item_html).append('<h4>都發局回覆</h4>');
-			$($item_html).append(array_render(con_case.response));
+			$($content_html).append('<h4>都發局回覆</h4>');
+			$($content_html).append(array_render(con_case.response));
 		};
 		if(con_case.resolution != null) {
-			$($item_html).append('<h4>決議</h4>');
-			$($item_html).append(array_render(con_case.resolution));
+			$($content_html).append('<h4>決議</h4>');
+			$($content_html).append(array_render(con_case.resolution));
 		};
 		if(con_case.petition != null) {
-			$($item_html).append('<h4>人民陳情意見</h4>');
-			$($item_html).append(petition_render(con_case.petition));
+			$($content_html).append('<h4>人民陳情意見</h4>');
+			$($content_html).append(petition_render(con_case.petition));
 		};
-	}
+		$($item_html).append($content_html);
+	};
 	return $item_html;
 }
 
@@ -73,7 +78,9 @@ function array_render(con_array) {
 	for(var i = 0; i < length; i++) {
 		if(typeof con_array[i] === 'object') {
 			if(Object.keys(con_array[i])[0] === 'table') {
-				$($array_html).append(table_render(con_array[i]));
+				c_table++;
+				var $table_content = table_render(con_array[i]);
+				$($array_html).append($table_content);
 			} else {
 				$($array_html).append('<p><span>this is an object.</span></p>');
 			};
@@ -85,14 +92,70 @@ function array_render(con_array) {
 }
 
 function table_render(con_table) {
-	var $table_html = $('<div class="table"/>');
-	console.log(con_table);
-	console.log(Object.keys(con_table));
-	var table_keys = Object.keys(con_table.table);
-	console.log(table_keys);
-	var a = table_keys[0];
-	console.log(a);
-	console.log(con_table.table[table_keys[0]]);
+
+	var $table_html = $('<table/>');
+	var $thead_html = $('<thead/>');
+	var $tbody_html = $('<tbody/>');
+
+	var cols_name = [];
+	var rows_count = 0;
+
+	for (var cols in con_table.table) {
+		var keys = Object.keys(con_table.table[cols][0]);
+		for (var keys_count = 0; keys_count < keys.length; keys_count++) {
+			cols_name.push(keys[keys_count]);
+		};
+		var cols_length = con_table.table[cols].length;
+		if (cols_length > rows_count) {rows_count = cols_length;};
+	};
+
+	for (var i = 1; i < rows_count + 1; i++) {
+		var $rows_html = $('<tr id=table'+c_table+'-row'+i+'/>');
+		$($tbody_html).append($rows_html);
+	};
+
+	for (var i = 0; i < cols_name.length; i++) {
+		$($thead_html).append('<th>'+cols_name[i]+'</th>');
+	};
+
+	for (var cols in con_table.table) {
+		for (var m_cols in con_table.table[cols]) {
+			for (var cells in con_table.table[cols][m_cols]) {
+				console.log(cells);
+				console.log(con_table.table[cols][m_cols][cells]);
+			};
+		};
+	};
+
+	// console.log(rows_count);
+		// console.log(cols);
+		// console.log(keys);
+		// console.log(cols_length);
+		// console.log(con_table.table[cols][0]);
+		// console.log(Object.keys(con_table.table[cols][0]));
+		// console.log(Object.keys(con_table.table[cols][0])[keys_count]);
+		// console.log(keys);
+			// console.log(Object.keys(con_table.table[cols][cols_content]));
+			// console.log(con_table.table[cols][cols_content]);
+			// for (var i = 1; i < cols_length + 1; i++) {
+			// keys = Object.keys(con_table.table[cols][i]);
+			// console.log(con_table.table[cols][i]);
+			// };
+		// cols_name.push('0');
+		// console.log('cols_name is ' + cols_name);
+		// console.log(cols_length);
+	// console.log(cols_name);
+
+	// $($table_html).append('<tr/>')
+	// console.log(con_table);
+	// console.log(Object.keys(con_table));
+	// var table_keys = Object.keys(con_table.table);
+	// console.log(table_keys);
+	// var a = table_keys[0];
+	// console.log(a);
+	// console.log(con_table.table[table_keys[0]]);
+	// $($table_html).append($cols_html);
+	// var $cols_html = $('<td/>')
 	// var tmp = [];
 	// var json = records.deliberate_item[0].description[3].table;
 	// console.log(typeof json);
@@ -109,11 +172,11 @@ function table_render(con_table) {
 	// console.log(tmp);
 
 	// var keys = [];
-	// for(var k in records.deliberate_item[0].description[3].table.原計畫) {keys.push(k);console.log(k)}
 	// console.log("total " + keys.length + " keys: " + keys);
 	// console.log(records.deliberate_item[0].description[3].table.原計畫.k);
-
-	$($table_html).append('<p><span>this is a table.</span></p>');
+	// $($table_html).append('<p><span>this is a table.</span></p>');
+	$($table_html).append($thead_html);
+	$($table_html).append($tbody_html);
 	return $table_html;
 }
 

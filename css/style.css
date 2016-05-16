@@ -29,6 +29,10 @@ footer {
 	background-color: #eeeeee;
 }
 
+.case {
+	background-color: #dddddd;
+}
+
 .petition-list {
 	border-style: dotted;
 	border-width: 1px;
