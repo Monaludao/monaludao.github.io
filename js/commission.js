@@ -109,72 +109,43 @@ function table_render(con_table) {
 		if (cols_length > rows_count) {rows_count = cols_length;};
 	};
 
-	for (var i = 1; i < rows_count + 1; i++) {
-		var $rows_html = $('<tr id=table'+c_table+'-row'+i+'/>');
-		$($tbody_html).append($rows_html);
-	};
-
 	for (var i = 0; i < cols_name.length; i++) {
 		$($thead_html).append('<th>'+cols_name[i]+'</th>');
 	};
 
+	var table_frame = [];
+	for (var i = 0; i < rows_count; i++) {
+		var row_array = [];
+		table_frame.push(row_array);
+	};
+
 	for (var cols in con_table.table) {
-		for (var m_cols in con_table.table[cols]) {
-			for (var cells in con_table.table[cols][m_cols]) {
-				console.log(cells);
-				console.log(con_table.table[cols][m_cols][cells]);
+		for (var i = 0; i < rows_count; i++){
+			var counter = 0;
+			for (var cells in con_table.table[cols][i]) {
+				table_frame[i].push(con_table.table[cols][i][cells]);
 			};
 		};
 	};
 
-	// console.log(rows_count);
-		// console.log(cols);
-		// console.log(keys);
-		// console.log(cols_length);
-		// console.log(con_table.table[cols][0]);
-		// console.log(Object.keys(con_table.table[cols][0]));
-		// console.log(Object.keys(con_table.table[cols][0])[keys_count]);
-		// console.log(keys);
-			// console.log(Object.keys(con_table.table[cols][cols_content]));
-			// console.log(con_table.table[cols][cols_content]);
-			// for (var i = 1; i < cols_length + 1; i++) {
-			// keys = Object.keys(con_table.table[cols][i]);
-			// console.log(con_table.table[cols][i]);
-			// };
-		// cols_name.push('0');
-		// console.log('cols_name is ' + cols_name);
-		// console.log(cols_length);
-	// console.log(cols_name);
+	var cols_count = 0;
+	for (var i = 0; i < rows_count; i++) {
+		if (table_frame[i].length > cols_count) {cols_count = table_frame[i].length};
+	};
 
-	// $($table_html).append('<tr/>')
-	// console.log(con_table);
-	// console.log(Object.keys(con_table));
-	// var table_keys = Object.keys(con_table.table);
-	// console.log(table_keys);
-	// var a = table_keys[0];
-	// console.log(a);
-	// console.log(con_table.table[table_keys[0]]);
-	// $($table_html).append($cols_html);
-	// var $cols_html = $('<td/>')
-	// var tmp = [];
-	// var json = records.deliberate_item[0].description[3].table;
-	// console.log(typeof json);
-	// var keys = Object.keys(json);
-	// console.log(keys);
-	// console.log(json);
-	// for (var j=0; j < keys.length; j++) {
-	//    var key = "test" + keys[j].replace(/^element_/, "");
-	//    tmp[key] = json[keys[j]];
-	// }
-	// json = tmp;
-	// console.log(key);
-	// console.log(json);
-	// console.log(tmp);
+	for (var i = 0; i < rows_count; i++) {
+		for (var j = 0; j < cols_count; j++) {
+			if (table_frame[i][j]) {
+				if (i != rows_count - 1 && typeof table_frame[i+1][j] === 'undefined') {
+					table_frame[i][j] = '<td rowspan="' + (rows_count - i) + '">' + table_frame[i][j] + '</td>';
+				} else {
+					table_frame[i][j] = '<td>' + table_frame[i][j] + '</td>';
+				};
+			};
+		};
+		$($tbody_html).append('<tr>' + table_frame[i].join('') + '</tr>');
+	};
 
-	// var keys = [];
-	// console.log("total " + keys.length + " keys: " + keys);
-	// console.log(records.deliberate_item[0].description[3].table.原計畫.k);
-	// $($table_html).append('<p><span>this is a table.</span></p>');
 	$($table_html).append($thead_html);
 	$($table_html).append($tbody_html);
 	return $table_html;
@@ -194,7 +165,6 @@ function petition_render(con_petition) {
 	var length = con_petition.length
 	var $petition_html = $('<div class="content petition"/>')
 	for(var i = 0; i < length; i++) {
-		// $($petition_html).append
 		var $petition_list = $('<div class="petition-list"/>')
 		$($petition_list).append('<p><span class="heading">編號：</span><span>'+con_petition[i].pet_num+'</span></p>');
 		$($petition_list).append('<p><span class="heading">陳情人：</span><span>'+con_petition[i].pet_name+'</span></p>');
