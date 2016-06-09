@@ -81,6 +81,10 @@ function array_render(con_array) {
 				c_table++;
 				var $table_content = table_render(con_array[i]);
 				$($array_html).append($table_content);
+			} else if(Object.keys(con_array[i])[0] === 'plan_compare_table') {
+				c_table++;
+				var $table_content = compare_table_render(con_array[i]);
+				$($array_html).append($table_content);
 			} else {
 				$($array_html).append('<p><span>this is an object.</span></p>');
 			};
@@ -92,7 +96,19 @@ function array_render(con_array) {
 }
 
 function table_render(con_table) {
+	var $table_html = $('<table/>');
+	var $thead_html = $('<thead/>');
+	var $tbody_html = $('<tbody/>');
 
+	$($tbody_html).append('<tr><td>test</td></tr>');
+
+	$($table_html).append($thead_html);
+	$($table_html).append($tbody_html);
+
+	return $table_html;
+}
+
+function compare_table_render(con_table) {
 	var $table_html = $('<table/>');
 	var $thead_html = $('<thead/>');
 	var $tbody_html = $('<tbody/>');
@@ -100,12 +116,12 @@ function table_render(con_table) {
 	var cols_name = [];
 	var rows_count = 0;
 
-	for (var cols in con_table.table) {
-		var keys = Object.keys(con_table.table[cols][0]);
+	for (var cols in con_table.plan_compare_table) {
+		var keys = Object.keys(con_table.plan_compare_table[cols][0]);
 		for (var keys_count = 0; keys_count < keys.length; keys_count++) {
 			cols_name.push(keys[keys_count]);
 		};
-		var cols_length = con_table.table[cols].length;
+		var cols_length = con_table.plan_compare_table[cols].length;
 		if (cols_length > rows_count) {rows_count = cols_length;};
 	};
 
@@ -119,11 +135,11 @@ function table_render(con_table) {
 		table_frame.push(row_array);
 	};
 
-	for (var cols in con_table.table) {
+	for (var cols in con_table.plan_compare_table) {
 		for (var i = 0; i < rows_count; i++){
 			var counter = 0;
-			for (var cells in con_table.table[cols][i]) {
-				table_frame[i].push(con_table.table[cols][i][cells]);
+			for (var cells in con_table.plan_compare_table[cols][i]) {
+				table_frame[i].push(con_table.plan_compare_table[cols][i][cells]);
 			};
 		};
 	};
