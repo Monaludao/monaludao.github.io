@@ -100,7 +100,47 @@ function table_render(con_table) {
 	var $thead_html = $('<thead/>');
 	var $tbody_html = $('<tbody/>');
 
-	$($tbody_html).append('<tr><td>test</td></tr>');
+	var keys = Object.keys(con_table.table);
+	$($thead_html).append('<th>項目</th>');
+
+	for (var i = 0; i < keys.length; i++) {
+		$($thead_html).append('<th>'+keys[i]+'</th>');
+	};
+
+	var table_frame = [];
+
+	for (var cols in con_table.table) {
+		for (var cells in con_table.table[cols]) {
+			var row_array = [];
+			table_frame.push(row_array);
+		};
+		break;
+	};
+
+	var first_push = 1;
+	for (var cols in con_table.table) {
+		var col_count = 0;
+		for (var cells in con_table.table[cols]) {
+			if (first_push === 1) {
+				table_frame[col_count].push(cells);
+			};
+			table_frame[col_count].push(con_table.table[cols][cells]);
+			col_count++;
+			console.log(col_count);
+			console.log(first_push);
+			console.log(table_frame);
+		};
+		first_push = 0;
+	};
+
+	// console.log(table_frame);
+	// var table_frame = [];
+	// for (var i = 0; i < rows_count; i++) {
+	// 	table_frame.push(row_array);
+	// };
+
+
+	$($tbody_html).append('<tr><td>'+keys+'</td></tr>');
 
 	$($table_html).append($thead_html);
 	$($table_html).append($tbody_html);
