@@ -126,27 +126,22 @@ function table_render(con_table) {
 			};
 			table_frame[col_count].push(con_table.table[cols][cells]);
 			col_count++;
-			console.log(col_count);
-			console.log(first_push);
-			console.log(table_frame);
 		};
 		first_push = 0;
 	};
 
-	// console.log(table_frame);
-	// var table_frame = [];
-	// for (var i = 0; i < rows_count; i++) {
-	// 	table_frame.push(row_array);
-	// };
-
-
-	$($tbody_html).append('<tr><td>'+keys+'</td></tr>');
+	for (var i = 0; i < table_frame.length; i++) {
+		for (var j = 0; j < keys.length+1; j++) {
+			table_frame[i][j] = '<td class="center">' + table_frame[i][j] + '</td>';
+		};
+		$($tbody_html).append('<tr>' + table_frame[i].join('') + '</tr>');
+	};
 
 	$($table_html).append($thead_html);
 	$($table_html).append($tbody_html);
 
 	return $table_html;
-}
+};
 
 function compare_table_render(con_table) {
 	var $table_html = $('<table/>');
